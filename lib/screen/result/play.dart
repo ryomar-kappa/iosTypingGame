@@ -77,49 +77,58 @@ class PlayView extends HookConsumerWidget {
         child: SafeArea(
           child: Center(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text(
-                  'スコア: ${score.value}',
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'スコア: ${score.value}',
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text('第${questionIndex.value + 1}問'),
+                    Text(
+                      '残り時間: ${remainingTime.value}秒',
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    )
+                  ],
+                ),
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      // タイマーの残り時間を表示
+                      Text(
+                        questions[questionIndex.value].word,
+                        style: const TextStyle(
+                          fontSize: 24,
+                        ),
+                      ),
+                      RichText(
+                        text: TextSpan(
+                          children: _highlightAnsweredCharacters(
+                              questions[questionIndex.value].yomigana,
+                              answer.value),
+                        ),
+                      ),
+                      const SizedBox(height: 30),
+                      TextField(
+                        textAlign: TextAlign.center,
+                        autofocus: true,
+                        focusNode: focusNode,
+                        controller: controller,
+                        keyboardType: TextInputType.text,
+                      ),
+                      const SizedBox(height: 20),
+                      Text('あなたの回答: ${answer.value}')
+                    ],
                   ),
-                ),
-                // タイマーの残り時間を表示
-                Text(
-                  '残り時間: ${remainingTime.value}秒',
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Text('第${questionIndex.value + 1}問'),
-                const Text(
-                  '問題文',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  questions[questionIndex.value].word,
-                  style: const TextStyle(
-                    fontSize: 24,
-                  ),
-                ),
-                RichText(
-                  text: TextSpan(
-                    children: _highlightAnsweredCharacters(
-                        questions[questionIndex.value].yomigana, answer.value),
-                  ),
-                ),
-                TextField(
-                  textAlign: TextAlign.center,
-                  autofocus: true,
-                  focusNode: focusNode,
-                  controller: controller,
-                  keyboardType: TextInputType.text,
-                ),
-                const SizedBox(height: 20),
-                Text('あなたの回答: ${answer.value}')
+                )
               ],
             ),
           ),
