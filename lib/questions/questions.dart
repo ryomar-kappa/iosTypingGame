@@ -26,6 +26,10 @@ final class WordList {
     const Word('孅い', 'かよわい'),
     const Word('軋かい', 'こまかい'),
     const Word('溽い', 'むしあつい'),
+    const Word('姦しい', 'かしましい'),
+    const Word('悍ましい', 'おぞましい'),
+    const Word('疾しい', 'やましい'),
+    const Word('夥しい', 'おびただしい'),
   ];
   final List<Word> nextWordList = [
     const Word('林檎', 'りんご'),

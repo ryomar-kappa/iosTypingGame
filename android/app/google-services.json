@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "107339187331",
+    "project_id": "fising-cd57c",
+    "storage_bucket": "fising-cd57c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:107339187331:android:f69d82d086bcad98d747b6",
+        "android_client_info": {
+          "package_name": "com.example.takayama_test"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIuwaLy5HvTgOId8yeOFgO5XjgdjzKJX4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
