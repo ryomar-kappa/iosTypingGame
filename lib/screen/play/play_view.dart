@@ -19,43 +19,37 @@ class PlayView extends HookConsumerWidget {
     return Theme(
       data: ThemeData(fontFamily: 'Aho'),
       child: Scaffold(
-        body: state.when(
-          loading: () => const Center(child: CircularProgressIndicator()),
-          error: (error, stackTrace) => Text(error.toString()),
-          data: (state) => SafeArea(
-              child: Stack(
-            children: [
-              Column(
-                children: [
-                  Center(child: Text(state.timerStr)),
-                  Center(child: Text(state.currectAnswerCountStr)),
-                  Center(
-                      child: Text(
-                    state.fishKanji,
-                    style: const TextStyle(fontSize: 100),
-                  )),
-                  SizedBox(
-                      height: 100,
-                      width: 100,
-                      child: Image.asset(state.svgPath)),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 60),
-                    child: TextFormField(
-                      textAlign: TextAlign.center,
-                      controller: controller,
-                      onEditingComplete: () {
-                        notifier.onPressedDone(controller.text, context);
-                        controller.clear();
-                      },
-                      autofocus: true,
-                    ),
-                  )
-                ],
-              ),
-              // Center(child: QuizCondition.inCorrect.icon)
-            ],
-          )),
-        ),
+        body: SafeArea(
+            child: Stack(
+          children: [
+            Column(
+              children: [
+                Center(child: Text(state.timerStr)),
+                Center(child: Text(state.currectAnswerCountStr)),
+                Center(
+                    child: Text(
+                  state.fishKanji,
+                  style: const TextStyle(fontSize: 100),
+                )),
+                SizedBox(
+                    height: 100, width: 100, child: Image.asset(state.svgPath)),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 60),
+                  child: TextFormField(
+                    textAlign: TextAlign.center,
+                    controller: controller,
+                    onEditingComplete: () {
+                      notifier.onPressedDone(controller.text, context);
+                      controller.clear();
+                    },
+                    autofocus: true,
+                  ),
+                )
+              ],
+            ),
+            Center(child: state.icon)
+          ],
+        )),
       ),
     );
   }

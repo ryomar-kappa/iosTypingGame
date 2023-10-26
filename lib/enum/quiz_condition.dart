@@ -12,7 +12,11 @@ enum QuizCondition {
     size: 200,
     color: Colors.red,
   )),
-  inCorrect(icon: Icon(Icons.clear));
+  inCorrect(
+      icon: Icon(
+    Icons.clear,
+    size: 200,
+  ));
 
   final Icon icon;
 

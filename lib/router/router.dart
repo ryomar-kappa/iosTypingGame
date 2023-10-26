@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:takayama_test/screen/end/ernd_view.dart';
 import 'package:takayama_test/screen/fish_regist_view.dart';
 import 'package:takayama_test/screen/play/count_down.dart';
 import 'package:takayama_test/screen/play/play_view.dart';
@@ -71,6 +72,16 @@ final goRouter = GoRouter(
         return MaterialPage(
           key: state.pageKey,
           child: const ZukanView(),
+        );
+      },
+    ),
+    GoRoute(
+      path: '/end',
+      name: 'end',
+      pageBuilder: (context, state) {
+        return MaterialPage(
+          key: state.pageKey,
+          child: EndView(),
         );
       },
     ),

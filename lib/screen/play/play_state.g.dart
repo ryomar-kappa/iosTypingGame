@@ -14,6 +14,7 @@ _$PlayStateImpl _$$PlayStateImplFromJson(Map<String, dynamic> json) =>
           .map((e) => Fish.fromJson(e as Map<String, dynamic>))
           .toList(),
       questionCount: json['questionCount'] as int,
+      quizCondition: $enumDecode(_$QuizConditionEnumMap, json['quizCondition']),
     );
 
 Map<String, dynamic> _$$PlayStateImplToJson(_$PlayStateImpl instance) =>
@@ -22,4 +23,11 @@ Map<String, dynamic> _$$PlayStateImplToJson(_$PlayStateImpl instance) =>
       'currectAnswerCount': instance.currectAnswerCount,
       'fishList': instance.fishList,
       'questionCount': instance.questionCount,
+      'quizCondition': _$QuizConditionEnumMap[instance.quizCondition]!,
     };
+
+const _$QuizConditionEnumMap = {
+  QuizCondition.beforeAnswer: 'beforeAnswer',
+  QuizCondition.correct: 'correct',
+  QuizCondition.inCorrect: 'inCorrect',
+};

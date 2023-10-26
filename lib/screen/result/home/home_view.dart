@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:takayama_test/main.dart';
 
 enum PlayType { onlyPaint, onlyKanji, all }
 
@@ -44,6 +45,7 @@ class HomeView extends HookConsumerWidget {
   Widget _button(BuildContext context, String title, PlayType playType) {
     return ElevatedButton(
         onPressed: () {
+          fishList.shuffle();
           context.push('/countDown', extra: playType);
         },
         style: ElevatedButton.styleFrom(

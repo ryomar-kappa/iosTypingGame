@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:takayama_test/enum/quiz_condition.dart';
 import 'package:takayama_test/main.dart';
 import 'package:takayama_test/screen/play/play_state.dart';
 
@@ -8,33 +10,24 @@ part 'play_provider.g.dart';
 @riverpod
 class Play extends _$Play {
   @override
-  Future<PlayState> build() async {
+  PlayState build() {
     return PlayState(
         timer: 100,
         currectAnswerCount: 0,
         fishList: fishList,
-        questionCount: 0);
+        questionCount: 0,
+        quizCondition: QuizCondition.beforeAnswer);
   }
 
-  void onPressedDone(String answer, BuildContext context) {
-    if (state.value == null) {
-      return;
+  Future<void> onPressedDone(String answer, BuildContext context) async {
+    state = state.checkAnswer(answer);
+
+    await Future.delayed(const Duration(milliseconds: 500));
+
+    if (state.checkEnd()) {
+      context.push('/end');
     }
-    final curretAnswerCount = _calcFishCount(answer);
-    _nextQuestion(context, curretAnswerCount);
-  }
 
-  int _calcFishCount(String answer) {
-    if (state.value!.fishYomigana == answer) {
-      return state.value!.currectAnswerCount + 1;
-    }
-    return state.value!.currectAnswerCount;
-  }
-
-  // 新しい問題(Fish)にとりかえる。
-  void _nextQuestion(BuildContext context, int currectAnswerCount) {
-    state = AsyncValue.data(state.value!.copyWith(
-        currectAnswerCount: currectAnswerCount,
-        questionCount: state.value!.questionCount + 1));
+    state = state.refleshQuizCondition().changeNextQuestion();
   }
 }
