@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:takayama_test/screen/play/play_view.dart';
 import 'package:takayama_test/screen/result/home/home_view.dart';
@@ -9,16 +8,25 @@ class CountDownView extends HookConsumerWidget {
   final PlayType playType;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    useEffect(() {
-      Future.delayed(const Duration(seconds: 1), () {
-        navigatePlayView(ref, context);
-      });
-    });
-    return const Scaffold(
-        body: Center(
-            child: Text(
-      'スタート',
-      style: TextStyle(fontSize: 42),
-    )));
+    return GestureDetector(
+      onTap: () => navigatePlayView(ref, context),
+      child: const Scaffold(
+          body: SafeArea(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('よみがなをひらがなでにゅうりょくしてね！'),
+            SizedBox(
+              height: 36,
+            ),
+            Center(
+                child: Text(
+              'タップしてスタート！',
+              style: TextStyle(fontSize: 42),
+            )),
+          ],
+        ),
+      )),
+    );
   }
 }

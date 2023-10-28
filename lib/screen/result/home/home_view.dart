@@ -14,9 +14,20 @@ class HomeView extends HookConsumerWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
+          const SizedBox(
+            height: 80,
+          ),
+          const Center(
+              child: Text(
+            'お魚読めるかな',
+            style: TextStyle(fontSize: 36),
+          )),
+          const SizedBox(
+            height: 80,
+          ),
           Expanded(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Padding(
                   padding: const EdgeInsets.symmetric(
