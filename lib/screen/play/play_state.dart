@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:takayama_test/enum/quiz_condition.dart';
+import 'package:takayama_test/main.dart';
 import 'package:takayama_test/model/fish.dart';
 
 part 'play_state.freezed.dart';
@@ -17,6 +18,17 @@ class PlayState with _$PlayState {
     required int questionCount,
     required QuizCondition quizCondition,
   }) = _PlayState;
+
+  factory PlayState.init() {
+    final fishQuestionList = [...globalFishList];
+    fishQuestionList.shuffle();
+    return PlayState(
+        timer: 100,
+        currectAnswerCount: 0,
+        fishList: fishQuestionList,
+        questionCount: 0,
+        quizCondition: QuizCondition.beforeAnswer);
+  }
 
   factory PlayState.fromJson(Map<String, dynamic> json) =>
       _$PlayStateFromJson(json);

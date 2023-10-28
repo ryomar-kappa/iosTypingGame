@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:takayama_test/screen/play/play_provider.dart';
 import 'package:takayama_test/screen/play/play_state.dart';
 import 'package:takayama_test/screen/result/home/home_view.dart';
+
+void navigatePlayView(WidgetRef ref, BuildContext context) {
+  ref.invalidate(playProvider);
+
+  context.go('/play', extra: PlayType.all);
+}
 
 class PlayView extends HookConsumerWidget {
   const PlayView({super.key, required this.playType});

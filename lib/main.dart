@@ -7,12 +7,12 @@ import 'package:takayama_test/ripository/ripository.dart';
 
 import 'router/router.dart';
 
-late List<Fish> fishList;
+late List<Fish> globalFishList;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  fishList = await Ripository().get();
+  globalFishList = await Ripository().get();
   runApp(const ProviderScope(child: MyApp()));
 }
 

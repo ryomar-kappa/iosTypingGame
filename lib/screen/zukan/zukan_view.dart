@@ -10,7 +10,7 @@ class ZukanView extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: GridView.builder(
-            itemCount: fishList.length,
+            itemCount: globalFishList.length,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               mainAxisSpacing: 5,
@@ -21,15 +21,16 @@ class ZukanView extends StatelessWidget {
                   onTap: () => showDialog(
                       context: context,
                       builder: (context) =>
-                          OsakanaSyousai(fish: fishList[index])),
+                          OsakanaSyousai(fish: globalFishList[index])),
                   child: SizedBox(
                     height: 100,
                     width: 100,
                     child: Column(children: [
-                      Text(fishList[index].kanji),
-                      Text(fishList[index].yomigana),
+                      Text(globalFishList[index].kanji),
+                      Text(globalFishList[index].yomigana),
                       SizedBox(
-                          height: 50, child: Image.asset(fishList[index].path))
+                          height: 50,
+                          child: Image.asset(globalFishList[index].path))
                     ]),
                   ),
                 )),
