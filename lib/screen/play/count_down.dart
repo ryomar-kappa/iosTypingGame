@@ -9,7 +9,7 @@ class CountDownView extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return GestureDetector(
-      onTap: () => navigatePlayView(ref, context),
+      onTap: () => navigatePlayView(ref, context, playType),
       child: const Scaffold(
           body: SafeArea(
         child: Column(
