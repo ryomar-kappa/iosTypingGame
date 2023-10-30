@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:takayama_test/main.dart';
 import 'package:takayama_test/model/fish.dart';
+
+void navigateZukanView(BuildContext context) {
+  context.go('/', extra: 1);
+}
 
 class ZukanView extends StatelessWidget {
   const ZukanView({super.key});

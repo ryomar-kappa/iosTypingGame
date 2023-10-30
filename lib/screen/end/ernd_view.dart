@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:takayama_test/screen/zukan/zukan_view.dart';
 
 class EndView extends StatelessWidget {
   const EndView({super.key});
@@ -16,7 +17,7 @@ class EndView extends StatelessWidget {
                   onPressed: () => context.push('/'),
                   child: const Text('もう一度')),
               FilledButton(
-                  onPressed: () => context.push('/'),
+                  onPressed: () => navigateZukanView(context),
                   child: const Text('お魚図鑑へ')),
               FilledButton(
                   onPressed: () => context.push('/'),

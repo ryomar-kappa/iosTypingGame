@@ -6,12 +6,15 @@ import 'package:takayama_test/screen/result/home/home_view.dart';
 import 'package:takayama_test/screen/zukan/zukan_view.dart';
 
 class TopView extends HookConsumerWidget {
-  const TopView({super.key});
+  const TopView({super.key, int? num}) : tabNumber = num ?? 0;
+
+  final int tabNumber;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final tabController = usePageController();
-    final pageState = useState<int>(0);
+    final pageState = useState<int>(tabNumber);
+    final tabController = usePageController(initialPage: pageState.value);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('ホーム画面'),
