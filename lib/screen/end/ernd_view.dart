@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:takayama_test/screen/result/home/home_view.dart';
 import 'package:takayama_test/screen/zukan/zukan_view.dart';
 
-class EndView extends StatelessWidget {
-  const EndView({super.key});
+class EndView extends ConsumerWidget {
+  const EndView({super.key, required this.playType});
+
+  final PlayType playType;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       body: SafeArea(
         child: Center(
@@ -14,7 +18,7 @@ class EndView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               FilledButton(
-                  onPressed: () => context.push('/'),
+                  onPressed: () => context.push('/countDown', extra: playType),
                   child: const Text('もう一度')),
               FilledButton(
                   onPressed: () => navigateZukanView(context),

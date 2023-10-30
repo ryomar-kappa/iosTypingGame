@@ -25,6 +25,7 @@ mixin _$PlayState {
   List<Fish> get fishList => throw _privateConstructorUsedError;
   int get questionCount => throw _privateConstructorUsedError;
   QuizCondition get quizCondition => throw _privateConstructorUsedError;
+  PlayType get playType => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -42,7 +43,8 @@ abstract class $PlayStateCopyWith<$Res> {
       int currectAnswerCount,
       List<Fish> fishList,
       int questionCount,
-      QuizCondition quizCondition});
+      QuizCondition quizCondition,
+      PlayType playType});
 }
 
 /// @nodoc
@@ -63,6 +65,7 @@ class _$PlayStateCopyWithImpl<$Res, $Val extends PlayState>
     Object? fishList = null,
     Object? questionCount = null,
     Object? quizCondition = null,
+    Object? playType = null,
   }) {
     return _then(_value.copyWith(
       timer: null == timer
@@ -85,6 +88,10 @@ class _$PlayStateCopyWithImpl<$Res, $Val extends PlayState>
           ? _value.quizCondition
           : quizCondition // ignore: cast_nullable_to_non_nullable
               as QuizCondition,
+      playType: null == playType
+          ? _value.playType
+          : playType // ignore: cast_nullable_to_non_nullable
+              as PlayType,
     ) as $Val);
   }
 }
@@ -102,7 +109,8 @@ abstract class _$$PlayStateImplCopyWith<$Res>
       int currectAnswerCount,
       List<Fish> fishList,
       int questionCount,
-      QuizCondition quizCondition});
+      QuizCondition quizCondition,
+      PlayType playType});
 }
 
 /// @nodoc
@@ -121,6 +129,7 @@ class __$$PlayStateImplCopyWithImpl<$Res>
     Object? fishList = null,
     Object? questionCount = null,
     Object? quizCondition = null,
+    Object? playType = null,
   }) {
     return _then(_$PlayStateImpl(
       timer: null == timer
@@ -143,6 +152,10 @@ class __$$PlayStateImplCopyWithImpl<$Res>
           ? _value.quizCondition
           : quizCondition // ignore: cast_nullable_to_non_nullable
               as QuizCondition,
+      playType: null == playType
+          ? _value.playType
+          : playType // ignore: cast_nullable_to_non_nullable
+              as PlayType,
     ));
   }
 }
@@ -155,7 +168,8 @@ class _$PlayStateImpl implements _PlayState {
       required this.currectAnswerCount,
       required final List<Fish> fishList,
       required this.questionCount,
-      required this.quizCondition})
+      required this.quizCondition,
+      required this.playType})
       : _fishList = fishList;
 
   factory _$PlayStateImpl.fromJson(Map<String, dynamic> json) =>
@@ -177,10 +191,12 @@ class _$PlayStateImpl implements _PlayState {
   final int questionCount;
   @override
   final QuizCondition quizCondition;
+  @override
+  final PlayType playType;
 
   @override
   String toString() {
-    return 'PlayState(timer: $timer, currectAnswerCount: $currectAnswerCount, fishList: $fishList, questionCount: $questionCount, quizCondition: $quizCondition)';
+    return 'PlayState(timer: $timer, currectAnswerCount: $currectAnswerCount, fishList: $fishList, questionCount: $questionCount, quizCondition: $quizCondition, playType: $playType)';
   }
 
   @override
@@ -195,7 +211,9 @@ class _$PlayStateImpl implements _PlayState {
             (identical(other.questionCount, questionCount) ||
                 other.questionCount == questionCount) &&
             (identical(other.quizCondition, quizCondition) ||
-                other.quizCondition == quizCondition));
+                other.quizCondition == quizCondition) &&
+            (identical(other.playType, playType) ||
+                other.playType == playType));
   }
 
   @JsonKey(ignore: true)
@@ -206,7 +224,8 @@ class _$PlayStateImpl implements _PlayState {
       currectAnswerCount,
       const DeepCollectionEquality().hash(_fishList),
       questionCount,
-      quizCondition);
+      quizCondition,
+      playType);
 
   @JsonKey(ignore: true)
   @override
@@ -228,7 +247,8 @@ abstract class _PlayState implements PlayState {
       required final int currectAnswerCount,
       required final List<Fish> fishList,
       required final int questionCount,
-      required final QuizCondition quizCondition}) = _$PlayStateImpl;
+      required final QuizCondition quizCondition,
+      required final PlayType playType}) = _$PlayStateImpl;
 
   factory _PlayState.fromJson(Map<String, dynamic> json) =
       _$PlayStateImpl.fromJson;
@@ -243,6 +263,8 @@ abstract class _PlayState implements PlayState {
   int get questionCount;
   @override
   QuizCondition get quizCondition;
+  @override
+  PlayType get playType;
   @override
   @JsonKey(ignore: true)
   _$$PlayStateImplCopyWith<_$PlayStateImpl> get copyWith =>

@@ -83,7 +83,9 @@ final goRouter = GoRouter(
       pageBuilder: (context, state) {
         return MaterialPage(
           key: state.pageKey,
-          child: EndView(),
+          child: EndView(
+            playType: state.extra as PlayType,
+          ),
         );
       },
     ),

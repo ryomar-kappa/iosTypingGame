@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:takayama_test/enum/quiz_condition.dart';
 import 'package:takayama_test/main.dart';
 import 'package:takayama_test/model/fish.dart';
+import 'package:takayama_test/screen/result/home/home_view.dart';
 
 part 'play_state.freezed.dart';
 part 'play_state.g.dart';
@@ -17,12 +18,14 @@ class PlayState with _$PlayState {
     required List<Fish> fishList,
     required int questionCount,
     required QuizCondition quizCondition,
+    required PlayType playType,
   }) = _PlayState;
 
-  factory PlayState.init() {
+  factory PlayState.init(PlayType playType) {
     final fishQuestionList = [...globalFishList];
     fishQuestionList.shuffle();
     return PlayState(
+        playType: playType,
         timer: 100,
         currectAnswerCount: 0,
         fishList: fishQuestionList,

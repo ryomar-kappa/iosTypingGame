@@ -20,8 +20,8 @@ class PlayView extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final controller = useTextEditingController();
 
-    final state = ref.watch(playProvider);
-    final notifier = ref.watch(playProvider.notifier);
+    final state = ref.watch(playProvider(playType));
+    final notifier = ref.watch(playProvider(playType).notifier);
 
     return Theme(
       data: ThemeData(fontFamily: 'Aho'),
